@@ -1,5 +1,6 @@
 - hosts: "192.168.189.200"
-  become: true
+  become: yes
+  become_user: root
   tasks:
   - name: Creates directory
     file:
