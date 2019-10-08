@@ -1,0 +1,34 @@
+- hosts: "192.168.189.200"
+  tasks:
+  - name: Creates directory
+    file:
+      path: /home/vertex/vagrant-home 
+      state: directory
+
+  - name: run a command
+    shell: "ls -ltr"
+    args:
+      chdir: "/home/vertex/vagrant-home"
+    register: find_output
+      
+  - debug:
+      var: find_output
+      
+  - name: Copy file 
+    copy:
+      src: /home/vertex/Vagrantfile
+      dest: /home/vertex/vagrant-home/Vagrantfile
+    register: find_output_copy
+    
+  - debug:
+      var: find_output_copy
+
+  - name: run a command
+    shell: "vagrant up"
+    args:
+      chdir: "/home/vertex/vagrant-home"
+    register: find_output_vagrant
+
+  - debug:
+      var: find_output_vagrant
+
